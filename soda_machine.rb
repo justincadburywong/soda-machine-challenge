@@ -11,17 +11,18 @@ class SodaMachine
   end
 
   def find_soda(soda_brand)
-    if @sodas.each { |soda| soda ==  soda_brand}
-      return @soda
+    if @sodas.each { |name, price| name ==  soda_brand}
+      return @brand
     else
       nil
     end
   end
 
+# i want to have the price  mulitplied by the sodas equal the cash
   def sell(soda_brand)
-    @cash = @sodas.count * @price
-    @sodas.count -= 1
-    @cash -= @price
+    @cash = @sodas.count/2
+    # @sodas.count -= 1
+    # @cash -= @price
   end
 
 end
