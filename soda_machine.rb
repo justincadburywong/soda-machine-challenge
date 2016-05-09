@@ -1,4 +1,3 @@
-require_relative 'soda'
 
 class SodaMachine
   attr_reader :sodas, :cash
@@ -14,6 +13,10 @@ class SodaMachine
 
   def find_soda(soda_brand)
     @sodas.find { |soda| soda.brand == soda_brand}
+# or
+    #@sodas.each { |soda| return soda if soda.brand == soda_brand}
+   
+
     # if @sodas.each { |name, price| name ==  soda_brand}
     #   return @brand
     # else
@@ -23,7 +26,12 @@ class SodaMachine
 
 # i want to have the price  mulitplied by the sodas equal the cash
   def sell(soda_brand)
-    @cash = @sodas.count/2
+    soda = find_soda(soda_brand)
+    return nil if !find_soda(soda_brand)
+
+    @cash += soda.price
+    @sodas.delete(soda)
+    # @cash = @sodas.count * @price
     # @sodas.count -= 1
     # @cash -= @price
   end
